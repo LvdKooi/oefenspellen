@@ -53,7 +53,7 @@ public class OefenspellenApplication {
 
         oefening.setVraag();
         while (antwoord > -1) {
-
+            System.out.println();
             oefening.printVraag();
             antwoord = reader.nextInt();
 
