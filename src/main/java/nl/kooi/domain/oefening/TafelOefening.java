@@ -8,26 +8,18 @@ public class TafelOefening extends Oefening {
     public TafelOefening(int tafel, int hoogsteGetal) {
         TafelOefening.tafel = tafel;
         TafelOefening.hoogsteGetal = hoogsteGetal;
+        bepaalVraagVariabelen();
     }
 
     @Override
-    public void setVraag() {
+    public void bepaalVraagVariabelen() {
         vraag = (int) (Math.random() * hoogsteGetal) + 1;
-        setAntwoord();
-    }
-
-    public int getVraag() {
-        return vraag;
-    }
-
-    public void setAntwoord() {
         antwoord = vraag * tafel;
-
     }
 
     @Override
-    public void printVraag() {
-        System.out.println("Hoeveel is " + getVraag() + " X " + tafel + "?");
+    public String toString() {
+        return "Hoeveel is " + vraag + " X " + tafel + "?";
     }
 
 }

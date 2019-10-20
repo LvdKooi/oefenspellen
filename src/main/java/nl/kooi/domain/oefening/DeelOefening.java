@@ -4,26 +4,27 @@ import java.util.Random;
 
 public class DeelOefening extends Oefening {
     private int noemer;
-    private int vorigeNoemer;
     private int deler;
     private Random rand;
-    private int vraagTeller;
-    private int antwoordEenTeller;
-    private double antwoordEenVerhouding;
+    private static int vraagTeller;
+    private static int antwoordEenTeller;
+    private static double antwoordEenVerhouding;
+    private static int vorigeNoemer;
 
     public DeelOefening(int hoogsteGetal) {
         this.hoogsteGetal = hoogsteGetal;
         rand = new Random();
+        bepaalVraagVariabelen();
     }
 
     @Override
-    public void setVraag() {
+    public void bepaalVraagVariabelen() {
         ++vraagTeller;
         antwoordEenVerhouding = (double) antwoordEenTeller / (double) vraagTeller;
 
         do {
             noemer = rand.nextInt(hoogsteGetal) + 1;
-            setAntwoord();
+            antwoord = rand.nextInt(99999) + 1;
             deler = noemer * antwoord;
         }
         while (noemer > hoogsteGetal ||
@@ -34,16 +35,11 @@ public class DeelOefening extends Oefening {
         vorigeNoemer = noemer;
 
         antwoordEenTeller = antwoord == 1 ? ++antwoordEenTeller : antwoordEenTeller;
+
     }
 
     @Override
-    public void printVraag() {
-        System.out.println("Hoeveel is " + noemer + " / " + deler + "?");
+    public String toString() {
+        return "Hoeveel is " + noemer + " / " + deler + "?";
     }
-
-    @Override
-    public void setAntwoord() {
-        antwoord = rand.nextInt(99999) + 1;
-    }
-
 }

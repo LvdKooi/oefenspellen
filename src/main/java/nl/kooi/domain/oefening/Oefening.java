@@ -4,11 +4,9 @@ public abstract class Oefening {
     protected int antwoord;
     protected int hoogsteGetal;
 
-    public abstract void setVraag();
+    public abstract void bepaalVraagVariabelen();
 
-    public abstract void printVraag();
-
-    public abstract void setAntwoord();
+    public abstract String toString();
 
     public int getAntwoord() {
         return antwoord;

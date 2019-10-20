@@ -9,6 +9,10 @@ public class GameHelper {
     private static String naamSpeler;
     private static Oefening oefening;
     private static Scanner reader = new Scanner(System.in);
+    private static int tafel = 0;
+    private static int hoogsteGetal = 0;
+    private static int spelkeuze = 0;
+
 
     public static void vraagNaam() {
         System.out.println("Wat is je naam?");
@@ -16,8 +20,6 @@ public class GameHelper {
     }
 
     public static void vraagSpelkeuzeEnKenmerken() {
-        int hoogsteGetal;
-        int spelkeuze;
 
         System.out.println("Wat wil je oefenen, " + naamSpeler + "?");
         System.out.println("1. Delen");
@@ -27,23 +29,22 @@ public class GameHelper {
         System.out.println("5. Vermenigvuldigen");
         spelkeuze = reader.nextInt();
 
+        if (spelkeuze == 2) {
+            System.out.println("Welke tafel wil je oefenen, " + naamSpeler + "?");
+            tafel = reader.nextInt();
+        }
         System.out.println("Wat is het hoogste getal dat voor mag komen in de vragen, " + naamSpeler + "?");
         hoogsteGetal = reader.nextInt();
 
-        setSpelkeuze(spelkeuze, hoogsteGetal);
+        setOefening();
     }
 
-    private static void setSpelkeuze(int spelkeuze, int hoogsteGetal) {
-        int tafel;
-
+    private static void setOefening() {
         switch (spelkeuze) {
             case 1:
                 oefening = new DeelOefening(hoogsteGetal);
                 break;
             case 2:
-                System.out.println("Welke tafel wil je oefenen, " + naamSpeler + "?");
-                tafel = reader.nextInt();
-
                 oefening = new TafelOefening(tafel, hoogsteGetal);
                 break;
             case 3:
@@ -62,24 +63,21 @@ public class GameHelper {
     public static void stelVraagEnVerwerkAntwoord() {
         int antwoord = 0;
 
-        oefening.setVraag();
+        setOefening();
 
         while (antwoord > -1) {
             System.out.println();
-            oefening.printVraag();
+            System.out.println(oefening);
             antwoord = reader.nextInt();
 
             if (antwoord == oefening.getAntwoord()) {
                 System.out.println("Dat klopt, goedzo " + naamSpeler + "!");
-                oefening.setVraag();
-
+                setOefening();
             } else if (antwoord < 0) {
                 System.out.println("Bedankt voor het spelen, " + naamSpeler + "! Groetjes van papa");
                 break;
-
             } else {
                 System.out.println("Fout! Probeer het nog een keer");
-
             }
         }
 

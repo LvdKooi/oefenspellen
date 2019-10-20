@@ -5,23 +5,20 @@ public class OptelOefening extends Oefening {
     private int getal2;
 
     public OptelOefening(int hoogsteGetal) {
-    this.hoogsteGetal = hoogsteGetal;
+        this.hoogsteGetal = hoogsteGetal;
+        bepaalVraagVariabelen();
     }
 
     @Override
-    public void setVraag() {
-    getal1 = (int) (Math.random() * hoogsteGetal) + 1;
-	getal2 = (int) (Math.random() * hoogsteGetal) + 1;
-	setAntwoord();
-    }
-
-      public void setAntwoord() {
+    public void bepaalVraagVariabelen() {
+        getal1 = (int) (Math.random() * hoogsteGetal) + 1;
+        getal2 = (int) (Math.random() * hoogsteGetal) + 1;
         antwoord = getal1 + getal2;
     }
 
     @Override
-    public void printVraag() {
-        System.out.println("Hoeveel is " + getal1 + " + " + getal2 + "?");
+    public String toString() {
+        return "Hoeveel is " + getal1 + " + " + getal2 + "?";
     }
 
 }

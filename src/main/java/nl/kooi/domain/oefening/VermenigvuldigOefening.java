@@ -6,22 +6,19 @@ public class VermenigvuldigOefening extends Oefening {
 
     public VermenigvuldigOefening(int hoogsteGetal) {
         this.hoogsteGetal = hoogsteGetal;
+        bepaalVraagVariabelen();
     }
 
     @Override
-    public void setVraag() {
+    public void bepaalVraagVariabelen() {
         getal1 = (int) (Math.random() * hoogsteGetal) + 1;
         getal2 = (int) (Math.random() * hoogsteGetal) + 1;
-        setAntwoord();
-    }
-
-    public void setAntwoord() {
         antwoord = getal1 * getal2;
     }
 
     @Override
-    public void printVraag() {
-        System.out.println("Hoeveel is " + getal1 + " * " + getal2 + "?");
+    public String toString() {
+        return "Hoeveel is " + getal1 + " * " + getal2 + "?";
     }
 
 }
