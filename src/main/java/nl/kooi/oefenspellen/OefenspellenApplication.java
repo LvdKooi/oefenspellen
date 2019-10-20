@@ -1,11 +1,9 @@
 package nl.kooi.oefenspellen;
 
 import nl.kooi.domain.*;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
 
-@SpringBootApplication
 public class OefenspellenApplication {
 
     private static String naamSpeler;
@@ -15,7 +13,7 @@ public class OefenspellenApplication {
     private static int tafel;
     private static Oefening oefening;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
         System.out.println("Wat is je naam?");
         naamSpeler = reader.nextLine();
