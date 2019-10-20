@@ -1,4 +1,4 @@
-package nl.kooi.domain;
+package nl.kooi.domain.oefening;
 
 public class OptelOefening extends Oefening {
     private int getal1;

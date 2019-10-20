@@ -1,4 +1,4 @@
-package nl.kooi.domain;
+package nl.kooi.domain.oefening;
 
 public abstract class Oefening {
     protected int antwoord;

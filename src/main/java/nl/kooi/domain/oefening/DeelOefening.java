@@ -1,9 +1,10 @@
-package nl.kooi.domain;
+package nl.kooi.domain.oefening;
 
 import java.util.Random;
 
 public class DeelOefening extends Oefening {
     private int noemer;
+    private int vorigeNoemer;
     private int deler;
     private Random rand;
     private int vraagTeller;
@@ -25,10 +26,14 @@ public class DeelOefening extends Oefening {
             setAntwoord();
             deler = noemer * antwoord;
         }
-        while (noemer > hoogsteGetal || deler > hoogsteGetal || (antwoord == 1 && antwoordEenVerhouding > 0.1));
+        while (noemer > hoogsteGetal ||
+                deler > hoogsteGetal ||
+                (antwoord == 1 && antwoordEenVerhouding > 0.1) ||
+                vorigeNoemer == noemer);
 
-        if (antwoord == 1)
-            ++antwoordEenTeller;
+        vorigeNoemer = noemer;
+
+        antwoordEenTeller = antwoord == 1 ? ++antwoordEenTeller : antwoordEenTeller;
     }
 
     @Override

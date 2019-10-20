@@ -1,4 +1,4 @@
-package nl.kooi.domain;
+package nl.kooi.domain.oefening;
 
 public class TafelOefening extends Oefening {
     private static int tafel;
@@ -6,8 +6,8 @@ public class TafelOefening extends Oefening {
     private int vraag;
 
     public TafelOefening(int tafel, int hoogsteGetal) {
-        this.tafel = tafel;
-        this.hoogsteGetal = hoogsteGetal;
+        TafelOefening.tafel = tafel;
+        TafelOefening.hoogsteGetal = hoogsteGetal;
     }
 
     @Override
