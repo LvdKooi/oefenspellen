@@ -24,6 +24,7 @@ public class GameHelper {
         System.out.println("2. Tafels");
         System.out.println("3. Optellen");
         System.out.println("4. Aftrekken");
+        System.out.println("5. Vermenigvuldigen");
         spelkeuze = reader.nextInt();
 
         System.out.println("Wat is het hoogste getal dat voor mag komen in de vragen, " + naamSpeler + "?");
@@ -50,6 +51,9 @@ public class GameHelper {
                 break;
             case 4:
                 oefening = new AftrekOefening(hoogsteGetal);
+                break;
+            case 5:
+                oefening = new VermenigvuldigOefening(hoogsteGetal);
                 break;
         }
 
