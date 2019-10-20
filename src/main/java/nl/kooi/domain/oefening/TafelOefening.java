@@ -8,11 +8,11 @@ public class TafelOefening extends Oefening {
     public TafelOefening(int tafel, int hoogsteGetal) {
         TafelOefening.tafel = tafel;
         TafelOefening.hoogsteGetal = hoogsteGetal;
-        bepaalVraagVariabelen();
+        bepaalOefeningVariabelen();
     }
 
     @Override
-    public void bepaalVraagVariabelen() {
+    public void bepaalOefeningVariabelen() {
         vraag = (int) (Math.random() * hoogsteGetal) + 1;
         antwoord = vraag * tafel;
     }

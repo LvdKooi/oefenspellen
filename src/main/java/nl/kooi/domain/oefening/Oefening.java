@@ -4,7 +4,7 @@ public abstract class Oefening {
     protected int antwoord;
     protected int hoogsteGetal;
 
-    public abstract void bepaalVraagVariabelen();
+    public abstract void bepaalOefeningVariabelen();
 
     public abstract String toString();
 

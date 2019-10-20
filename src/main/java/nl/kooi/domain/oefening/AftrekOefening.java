@@ -6,26 +6,23 @@ public class AftrekOefening extends Oefening {
 
     public AftrekOefening(int hoogsteGetal) {
     this.hoogsteGetal = hoogsteGetal;
+        bepaalOefeningVariabelen();
     }
 
     @Override
-    public void setVraag() {
+    public void bepaalOefeningVariabelen() {
     getal1 = (int) (Math.random() * hoogsteGetal) + 1;
 	do {
         getal2 = (int) (Math.random() * hoogsteGetal) + 1;
     }
 	while(getal2 > getal1);
 
-	setAntwoord();
-    }
-
-      public void setAntwoord() {
         antwoord = getal1 - getal2;
     }
 
     @Override
-    public void printVraag() {
-        System.out.println("Hoeveel is " + getal1 + " - " + getal2 + "?");
+    public String toString() {
+        return "Hoeveel is " + getal1 + " - " + getal2 + "?";
     }
 
 }

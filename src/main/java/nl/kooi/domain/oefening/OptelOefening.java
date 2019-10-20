@@ -6,11 +6,11 @@ public class OptelOefening extends Oefening {
 
     public OptelOefening(int hoogsteGetal) {
         this.hoogsteGetal = hoogsteGetal;
-        bepaalVraagVariabelen();
+        bepaalOefeningVariabelen();
     }
 
     @Override
-    public void bepaalVraagVariabelen() {
+    public void bepaalOefeningVariabelen() {
         getal1 = (int) (Math.random() * hoogsteGetal) + 1;
         getal2 = (int) (Math.random() * hoogsteGetal) + 1;
         antwoord = getal1 + getal2;

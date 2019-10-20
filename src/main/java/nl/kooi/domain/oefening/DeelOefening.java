@@ -14,11 +14,11 @@ public class DeelOefening extends Oefening {
     public DeelOefening(int hoogsteGetal) {
         this.hoogsteGetal = hoogsteGetal;
         rand = new Random();
-        bepaalVraagVariabelen();
+        bepaalOefeningVariabelen();
     }
 
     @Override
-    public void bepaalVraagVariabelen() {
+    public void bepaalOefeningVariabelen() {
         ++vraagTeller;
         antwoordEenVerhouding = (double) antwoordEenTeller / (double) vraagTeller;
 
