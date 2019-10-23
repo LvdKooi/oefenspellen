@@ -2,6 +2,7 @@ package nl.kooi.domain.game;
 
 import nl.kooi.domain.oefening.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameHelper {
@@ -27,14 +28,12 @@ public class GameHelper {
         System.out.println("3. Optellen");
         System.out.println("4. Aftrekken");
         System.out.println("5. Vermenigvuldigen");
-        spelkeuze = reader.nextInt();
+        spelkeuze = ontvangAntwoordMetMinEnMax(1, 5);
 
         if (spelkeuze == 2) {
-            System.out.println("Welke tafel wil je oefenen, " + naamSpeler + "?");
-            tafel = reader.nextInt();
+            tafel = stelVraagOntvangAntwoord("Welke tafel wil je oefenen, " + naamSpeler + "?");
         }
-        System.out.println("Wat is het hoogste getal dat voor mag komen in de vragen, " + naamSpeler + "?");
-        hoogsteGetal = reader.nextInt();
+        hoogsteGetal = stelVraagOntvangAntwoord("Wat is het hoogste getal dat voor mag komen in de vragen, " + naamSpeler + "?");
 
         setOefening();
     }
@@ -67,8 +66,8 @@ public class GameHelper {
 
         while (antwoord > -1) {
             System.out.println();
-            System.out.println(oefening);
-            antwoord = reader.nextInt();
+
+            antwoord = stelVraagOntvangAntwoord(oefening.toString());
 
             if (antwoord == oefening.getAntwoord()) {
                 System.out.println("Dat klopt, goedzo " + naamSpeler + "!");
@@ -80,7 +79,38 @@ public class GameHelper {
                 System.out.println("Fout! Probeer het nog een keer");
             }
         }
-
     }
 
+    private static int stelVraagOntvangAntwoord(String vraag) {
+        Exception exception;
+        int antwoord = 0;
+
+        do {
+            try {
+                if (vraag != null) System.out.println(vraag);
+                antwoord = reader.nextInt();
+                exception = null;
+            } catch (InputMismatchException e) {
+                exception = e;
+                System.out.println("Oeps, er ging iets fout! Probeer alleen getallen in te toetsen.");
+                reader.next();
+            }
+        }
+        while ((exception != null));
+
+        return antwoord;
+    }
+
+    private static int ontvangAntwoord() {
+        return stelVraagOntvangAntwoord(null);
+    }
+
+    private static int ontvangAntwoordMetMinEnMax(int min, int max) {
+        int antwoord;
+        antwoord = stelVraagOntvangAntwoord(null);
+        while (antwoord < min || antwoord > max) {
+            antwoord = stelVraagOntvangAntwoord("Probeer opnieuw. Het antwoord dient minimaal " + min + " en maximaal " + max + " te zijn.");
+        }
+        return antwoord;
+    }
 }
