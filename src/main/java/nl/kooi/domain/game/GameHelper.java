@@ -39,24 +39,7 @@ public class GameHelper {
     }
 
     private static void setOefening() {
-        switch (spelkeuze) {
-            case 1:
-                oefening = new DeelOefening(hoogsteGetal);
-                break;
-            case 2:
-                oefening = new TafelOefening(tafel, hoogsteGetal);
-                break;
-            case 3:
-                oefening = new OptelOefening(hoogsteGetal);
-                break;
-            case 4:
-                oefening = new AftrekOefening(hoogsteGetal);
-                break;
-            case 5:
-                oefening = new VermenigvuldigOefening(hoogsteGetal);
-                break;
-        }
-
+       oefening = OefeningFactory.getOefening(spelkeuze,hoogsteGetal,tafel);
     }
 
     public static void stelVraagEnVerwerkAntwoord() {
